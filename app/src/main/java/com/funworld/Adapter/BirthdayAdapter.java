@@ -37,8 +37,8 @@ private List<Birthday> list =new ArrayList<>();
      notifyDataSetChanged();
     }
 
-    public void getPosAt(){
-
+    public Birthday getPosAt(int position){
+      return list.get(position);
     }
 
     @Override
