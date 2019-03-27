@@ -4,10 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.Toast;
+
+import com.funworld.Adapter.BirthdayAdapter;
 import com.funworld.Model.Birthday;
 import com.funworld.Model.BirthdayViewModel;
 
@@ -23,11 +27,16 @@ BirthdayViewModel viewModel;
         Toolbar toolbar =findViewById(R.id.tb);
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorPrimary));
         setSupportActionBar(toolbar);
+        RecyclerView recyclerView =findViewById(R.id.recycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+        final BirthdayAdapter birthdayAdapter =new BirthdayAdapter();
+        recyclerView.setAdapter(birthdayAdapter);
         viewModel= ViewModelProviders.of(this).get(BirthdayViewModel.class);
         viewModel.getAllBirthday().observe(this, new Observer<List<Birthday>>() {
             @Override
             public void onChanged(List<Birthday> birthdays) {
-                Toast.makeText(getApplicationContext(),"changed",Toast.LENGTH_LONG).show();
+                birthdayAdapter.setBirthday(birthdays);
             }
         });
     }

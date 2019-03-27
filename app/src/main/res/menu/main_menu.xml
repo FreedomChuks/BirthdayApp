@@ -5,7 +5,7 @@
 <item
     android:title="Notifications"
     android:id="@+id/notification"
-    android:icon="@drawable/ic_notification"
+    android:icon="@drawable/ic_calender"
     app:showAsAction="ifRoom"
     android:orderInCategory="1"/>
 
