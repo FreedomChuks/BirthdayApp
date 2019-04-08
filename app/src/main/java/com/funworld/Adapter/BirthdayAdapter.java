@@ -10,6 +10,7 @@ import com.funworld.Model.Birthday;
 import com.funworld.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,21 @@ private List<Birthday> list =new ArrayList<>();
     public void onBindViewHolder(@NonNull vHolder holder, int position) {
      Birthday birthday=list.get(position);
      holder.name.setText(birthday.getFirstName());
+     holder.credentials.setText(getCredentials(position));
+     holder.year.setText(getAge(position)+"yrs");
+     holder.date.setText(getDate(position));
+    }
+
+    public String getCredentials(int position){
+        String credential=list.get(position).getFirstName();
+        String name=credential.substring(0,1).toUpperCase();
+        return name;
+    }
+
+    public int getAge(int position){
+        int age=list.get(position).getCalendar().get(Calendar.YEAR);
+      int currentage=Calendar.getInstance().get(Calendar.YEAR)-age;
+      return currentage;
     }
 
     public void setBirthday(List<Birthday> birthday){
@@ -37,8 +53,19 @@ private List<Birthday> list =new ArrayList<>();
      notifyDataSetChanged();
     }
 
+    public String getDate(int position){
+        Calendar calendar=Calendar.getInstance();
+        calendar= list.get(position).getCalendar();
+        String date=calendar.get(Calendar.DAY_OF_MONTH)+"/"+calendar.get(Calendar.MONTH)+"/"+calendar.get(Calendar.YEAR);
+     return date;
+    }
+
     public Birthday getPosAt(int position){
       return list.get(position);
+    }
+
+    public ArrayList<Birthday> getBirthdays() {
+        return (ArrayList<Birthday>) list;
     }
 
     @Override

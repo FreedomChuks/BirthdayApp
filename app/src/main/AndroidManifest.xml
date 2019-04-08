@@ -22,6 +22,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+      <!--Boot BroadCastReceiver-->
+        <receiver android:name=".pojo.BootAlarmBroacaster">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+
+        <receiver android:name=".pojo.AlarmReceivers"/>
+        <!--<service android:name=".pojo.SetAlermSerivce"/>-->
 
         <meta-data
             android:name="preloaded_fonts"

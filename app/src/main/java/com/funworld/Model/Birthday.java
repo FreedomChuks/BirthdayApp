@@ -2,6 +2,7 @@ package com.funworld.Model;
 
 import com.funworld.util.Converters;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import androidx.room.Entity;
@@ -15,7 +16,7 @@ public class Birthday {
     private String firstName;
     private String lastName;
     @TypeConverters(Converters.class)
-    private Date dob;
+    private Calendar calendar;
 
     public int getId() {
         return id;
@@ -29,18 +30,16 @@ public class Birthday {
         return lastName;
     }
 
-
-    public Date getDob() {
-        return dob;
+    public Calendar getCalendar() {
+        return calendar;
+    }
+    public Birthday(String firstName, String lastName, Calendar calendar) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.calendar = calendar;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Birthday (String firstName, String lastName, Date dob) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dob = dob;
     }
 }

@@ -9,7 +9,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Birthday.class},version = 1,exportSchema = false)
+@Database(entities = {Birthday.class},version = 2,exportSchema = false)
 public abstract class BirthdayDB extends RoomDatabase {
     //use a singleton method to prevent createing class instance\
     private static BirthdayDB instance;

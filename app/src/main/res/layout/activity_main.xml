@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:id="@+id/rtview"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -16,10 +17,10 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb"
-            app:layout_scrollFlags="scroll|snapMargins"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:layout_margin="16dp"
             android:background="@drawable/curved"
-            android:elevation="2dp"
+            android:elevation="3dp"
             android:layout_width="match_parent"
             android:layout_height="50dp">
         </androidx.appcompat.widget.Toolbar>
