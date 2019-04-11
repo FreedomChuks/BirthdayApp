@@ -92,6 +92,7 @@ public static final int ADD_BIRTHDAY_REQUEST=1;
             @Override
             public void onChanged(List<Birthday> birthdays) {
                 birthdayAdapter.setBirthday(birthdays);
+
             }
         });
 

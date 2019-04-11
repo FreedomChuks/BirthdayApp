@@ -11,7 +11,6 @@
         android:layout_height="wrap_content">
 
         <ImageView
-
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,10 +18,11 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:padding="20dp"
-            android:background="@drawable/outline"
+            android:background="@drawable/circle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/credential"
@@ -42,10 +42,10 @@
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
+
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"

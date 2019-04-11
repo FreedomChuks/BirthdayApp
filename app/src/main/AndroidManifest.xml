@@ -12,28 +12,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddBirthday"
-            android:parentActivityName=".MainActivity"
+        <activity android:name=".Spalsh"
+            android:noHistory="true"
             ></activity>
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".AddBirthday"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTop"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-      <!--Boot BroadCastReceiver-->
+        </activity> <!-- Boot BroadCastReceiver -->
         <receiver android:name=".pojo.BootAlarmBroacaster">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
             </intent-filter>
         </receiver>
-
-
-        <receiver android:name=".pojo.AlarmReceivers"/>
-        <!--<service android:name=".pojo.SetAlermSerivce"/>-->
-
+        <receiver android:name=".pojo.AlarmReceivers" /> <!-- <service android:name=".pojo.SetAlermSerivce"/> -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

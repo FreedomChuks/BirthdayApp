@@ -34,6 +34,7 @@ private List<Birthday> list =new ArrayList<>();
      holder.credentials.setText(getCredentials(position));
      holder.year.setText(getAge(position)+"yrs");
      holder.date.setText(getDate(position));
+     holder.dateleft.setText(getRemainingDays(position)+"Days");
     }
 
     public String getCredentials(int position){
@@ -58,6 +59,17 @@ private List<Birthday> list =new ArrayList<>();
         calendar= list.get(position).getCalendar();
         String date=calendar.get(Calendar.DAY_OF_MONTH)+"/"+calendar.get(Calendar.MONTH)+"/"+calendar.get(Calendar.YEAR);
      return date;
+    }
+
+    public int getRemainingDays(int position){
+        int daysleft=0;
+        Calendar CurrentDate=Calendar.getInstance();
+        Calendar day =Calendar.getInstance();
+        day.setTime(list.get(position).getCalendar().getTime());
+        if (day.after(CurrentDate)){
+            daysleft= day.get(Calendar.DAY_OF_MONTH)-(CurrentDate.get(Calendar.DAY_OF_MONTH));
+        }
+        return daysleft;
     }
 
     public Birthday getPosAt(int position){
