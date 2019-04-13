@@ -4,8 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.airbnb.lottie.L;
 import com.funworld.Model.Birthday;
 import com.funworld.R;
 
@@ -14,9 +16,11 @@ import java.util.Calendar;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.vHolder> {
+ public  Listner listner;
 private List<Birthday> list =new ArrayList<>();
 
 
@@ -25,6 +29,14 @@ private List<Birthday> list =new ArrayList<>();
     public vHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.birthday_card,parent,false);
         return new vHolder(view);
+    }
+
+   public  interface Listner{
+       void onClick(long id);
+    }
+
+    public void setListner(Listner listner){
+        this.listner=listner;
     }
 
     @Override
@@ -87,13 +99,23 @@ private List<Birthday> list =new ArrayList<>();
 
     public class vHolder extends RecyclerView.ViewHolder{
         TextView credentials,name,year,date,dateleft;
+        RelativeLayout relativeLayout;
         public vHolder(@NonNull View itemView) {
             super(itemView);
+            relativeLayout=(RelativeLayout) itemView;
             dateleft=itemView.findViewById(R.id.daysleft);
             credentials=itemView.findViewById(R.id.credential);
             name=itemView.findViewById(R.id.name);
             year=itemView.findViewById(R.id.years);
             date=itemView.findViewById(R.id.date);
+            relativeLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos=getAdapterPosition();
+                    listner.onClick(pos);
+                }
+            });
+
         }
     }
 }

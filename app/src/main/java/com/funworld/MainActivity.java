@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import com.funworld.Adapter.BirthdayAdapter;
 import com.funworld.Adapter.RecyclerviewDecoration;
@@ -40,9 +41,11 @@ BirthdayViewModel viewModels;
 Birthday birthday;
 Calendar calendar;
 BirthdayAdapter birthdayAdapter;
+RelativeLayout relativeLayout;
 public static final int ADD_BIRTHDAY_REQUEST=1;
     public static final String NOTIFICATION_CHANNEL="com.funworld.pojo.channel";
     NotificationManager notificationManager,mNotificationManager;
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -68,6 +71,7 @@ public static final int ADD_BIRTHDAY_REQUEST=1;
         Toolbar toolbar =findViewById(R.id.tb);
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorPrimary));
         setSupportActionBar(toolbar);
+        relativeLayout=findViewById(R.id.relative);
         birthdayAdapter=new BirthdayAdapter();
         notificationManager=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -75,6 +79,7 @@ public static final int ADD_BIRTHDAY_REQUEST=1;
         recyclerView.addItemDecoration(new RecyclerviewDecoration(this,LinearLayoutManager.VERTICAL,16));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
+
         FloatingActionButton floatingActionButton =findViewById(R.id.fab);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +100,13 @@ public static final int ADD_BIRTHDAY_REQUEST=1;
 
             }
         });
+        birthdayAdapter.setListner(new BirthdayAdapter.Listner() {
+            @Override
+            public void onClick(long id) {
+                Toast.makeText(getApplicationContext(),"index "+id,Toast.LENGTH_LONG).show();
+            }
+        });
+
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
@@ -106,8 +118,8 @@ public static final int ADD_BIRTHDAY_REQUEST=1;
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             viewModels.Delete(birthdayAdapter.getPosAt(viewHolder.getAdapterPosition()));
-                snackbarhelper.birthdayDeleted(findViewById(R.id.rtview),birthdayAdapter);
-                    AlarmHelper.cancleAlarm(getApplicationContext(), birthdayAdapter.getPosAt(birthdayAdapter.getItemCount()-1).getLastName().hashCode());
+                snackbarhelper.birthdayDeleted(findViewById(R.id.rtview),birthdayAdapter,viewHolder.getAdapterPosition());
+                AlarmHelper.cancleAlarm(getApplicationContext(),birthday);
 
 
 

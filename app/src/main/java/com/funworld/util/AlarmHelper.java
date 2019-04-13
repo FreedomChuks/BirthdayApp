@@ -20,14 +20,14 @@ public class AlarmHelper {
 
     public static void cancelAllAlarms(Context context, ArrayList<Birthday> birthdays) {
         for (Birthday b: birthdays) {
-            cancleAlarm(context, b.getLastName().hashCode());
+            cancleAlarm(context, b);
         }
     }
 
-    public static void cancleAlarm(Context context,int id){
+    public static void cancleAlarm(Context context,Birthday birthday){
         //creating the recever intent
         Intent calcelalarm = new Intent(context, AlarmReceivers.class);
-        PendingIntent pendingIntent =PendingIntent.getBroadcast(context.getApplicationContext(),id,calcelalarm,PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent =PendingIntent.getBroadcast(context.getApplicationContext(),birthday.getLastName().hashCode()+birthday.getFirstName().hashCode(),calcelalarm,PendingIntent.FLAG_UPDATE_CURRENT);
         //cancel alerm
         AlarmManager alarmManager=(AlarmManager) context.getApplicationContext().getSystemService(Context.ALARM_SERVICE);
         if (alarmManager!=null){

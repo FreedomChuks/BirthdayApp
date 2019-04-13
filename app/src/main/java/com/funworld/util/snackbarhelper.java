@@ -9,8 +9,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class snackbarhelper {
 
-    public static void birthdayDeleted(View view, BirthdayAdapter birthdayAdapter) {
-        Snackbar.make(view, birthdayAdapter.getPosAt(birthdayAdapter.getItemCount()-1).getFirstName() + " " + view.getContext().getString(R.string.delete)
+    public static void birthdayDeleted(View view, BirthdayAdapter birthdayAdapter,int pos) {
+        Snackbar.make(view, birthdayAdapter.getPosAt(pos).getFirstName() + " " + view.getContext().getString(R.string.delete)
                 , Snackbar.LENGTH_LONG).show();
     }
 }

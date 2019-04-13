@@ -21,4 +21,3 @@ public class Spalsh extends AppCompatActivity {
         },3000);
     }
 }
-g

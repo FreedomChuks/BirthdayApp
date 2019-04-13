@@ -38,6 +38,7 @@ public static final String Extra_Date="com.funworld.date";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_birthday);
         Toolbar toolbar =findViewById(R.id.tb2);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         ActionBar actionBar=getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);

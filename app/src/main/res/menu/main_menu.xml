@@ -2,17 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
+
+
+    <item android:orderInCategory="1"
+        android:title="deleteAll"
+        android:id="@+id/deleteAll"
+        app:showAsAction="never"/>
+
 <item
     android:title="Notifications"
     android:id="@+id/notification"
     android:icon="@drawable/ic_calender"
     app:showAsAction="ifRoom"
-    android:orderInCategory="1"/>
+    android:orderInCategory="2"/>
 
-    <item android:orderInCategory="2"
-        android:title="deleteAll"
-        android:id="@+id/deleteAll"
-        app:showAsAction="never"/>
+
 
 
 </menu>

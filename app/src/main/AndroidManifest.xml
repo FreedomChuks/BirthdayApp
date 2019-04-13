@@ -12,9 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Spalsh"
-            android:noHistory="true"
-            >
+        <activity android:name=".DetailScreen"></activity>
+        <activity
+            android:name=".Spalsh"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,10 +25,9 @@
         <activity
             android:name=".AddBirthday"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity"
-            android:launchMode="singleTop"
-            >
-        </activity> <!-- Boot BroadCastReceiver -->
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTop"></activity> <!-- Boot BroadCastReceiver -->
         <receiver android:name=".pojo.BootAlarmBroacaster">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

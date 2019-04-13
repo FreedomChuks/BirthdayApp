@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relative"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -47,13 +48,13 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/raleway_bold"
+            android:fontFamily="@font/open_sans_condensed_bold"
             android:text="Freedom"
             app:layout_constraintBottom_toTopOf="@+id/date"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="@+id/date"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/date"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -64,6 +65,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:fontFamily="@font/open_sans"
             android:text="11/1/2019"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/daysleft"
@@ -76,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/raleway_black"
+            android:fontFamily="@font/open_sans_condensed_bold"
             android:text="Today"
             app:layout_constraintBaseline_toBaselineOf="@+id/date"
             app:layout_constraintEnd_toEndOf="parent" />
